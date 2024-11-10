@@ -9,9 +9,9 @@
 :root {
   --light-blue: #087ef5;
   --yellow: #dcc726;
-  --dark-grey: #343738;
+  --dark-grey: #2a2c2d;
   --white: #ffffff;
-  --black: #252727;
+  --black: #000101;
 }
 
 html {
@@ -96,15 +96,10 @@ body {
   position: absolute;
   bottom: 0;
   width: 100%;
-  white-space: nowrap;
-  background-color: var(--dark-grey);
-  color: var(--white);
-  text-align: center;
-  padding: .5rem;
+  text-align: left;
 }
 
-@media screen and (min-width: 48rem) {
-  /* Default Settings */
+@media screen and (min-width: 45rem) {
 
   html {
     font-size: 1.2rem;
@@ -116,13 +111,14 @@ body {
 
   .container {
     margin: 1rem auto 1rem auto;
+    border-radius: .30rem;
     border: .5rem solid var(--light-blue);
-    border-radius: .25rem;
     max-width: 90vw;
     background-color: var(--white);
   }
 }
 
+/*Hero picture*/
 
 .hero-caption {
   display: flex;
@@ -130,22 +126,24 @@ body {
   position: absolute;
   bottom: 0;
   padding: .25rem;
-  background-color: rgb(181, 199, 227, 0.9);
-  border-radius: .25rem;
-  border: .1rem solid var(--dark-blue);
+  border-radius: .20rem;
+  border: .1rem solid var(--light-blue);
   max-width: 50%;
-  font-weight: bold;
+  background-color: rgba(173, 210, 243, 0.9);
 }
+
 
 .hero-img img {
   display: block;
   width: 100%;
 }
 
+
 .home-container {
   padding: 1rem .600rem;
   margin-bottom: 2rem;
 }
+
 
 .hero {
   position: relative;
@@ -153,11 +151,13 @@ body {
   margin-top: 2rem;
 }
 
+
 .hero-caption ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
 }
+
 
 .hero-caption img {
   display: block;
@@ -165,18 +165,23 @@ body {
   margin-top: .75rem;
 }
 
+
 .home-reviews li {
   margin-bottom: .640rem;
 }
+
+/*Upgrade section*/
 
 .upgrades a {
   text-decoration: none;
   color: var(--dark-blue);
 }
 
+
 .upgrades a:hover {
   color: var(--yellow);
 }
+
 
 .upgrades-container {
   display: grid;
@@ -184,37 +189,37 @@ body {
   width: 100%;
 }
 
-.item-img {
-  background-color: var(--blue);
-  width: 100%;
-  height: 5.625rem;
-  padding: .75rem;
-  border-radius: .25rem;
-}
+/*Images (img)*/
 
 .item-img img {
   display: block;
-  margin: .25rem auto 0 auto;
+  margin: .20rem auto 0 auto;
   max-height: 100%;
-  width: 50%;
+  width: 40%;
 }
 
-.upgrade-item {
-  margin: .25rem;
+
+.item-img {
+  background-color: var(--light-blue);
+  width: 100%;
+  height: 5.5rem;
+  padding: .40rem;
 }
+
+
+.upgrade-item {
+  margin: .20rem;
+}
+
 
 .item-caption {
   text-align: center;
 }
 
-@media screen and (min-width: 48rem) {
+
+@media screen and (min-width: 45rem) {
   .home-reviews {
       grid-area: reviews;
-  }
-
-  .upgrades {
-      grid-area: upgrades;
-      margin-right: 2rem;
   }
 
   .reviews-container {
@@ -224,4 +229,10 @@ body {
           'upgrades  reviews';
       margin-top: 2rem;
   }
+
+  .upgrades {
+    grid-area: upgrades;
+    margin-right: 2rem;
+}
+
 }
