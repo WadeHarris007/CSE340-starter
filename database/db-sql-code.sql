@@ -238,7 +238,7 @@ set inv_description = replace(
         inv_description,
         'small interiors',
         'a huge interior'
-    )
+    );
 
 -- This will update the inv_image and inv_thumbnail records
 update public.inventory

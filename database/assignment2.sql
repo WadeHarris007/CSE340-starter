@@ -24,7 +24,7 @@ set inv_description = replace(
         inv_description,
         'small interiors',
         'a huge interior'
-    )
+    );
 where inv_id = 10;
 -- This will select vehicles from inventory that fall within the sport category
 select *
