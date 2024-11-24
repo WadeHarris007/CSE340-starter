@@ -300,15 +300,15 @@ body {
 }
 
 .vehicle-info {
-  font-size: .9rem;
-  margin-top: 1.5rem;
+  font-size: .8rem;
+  margin-top: 1.2rem;
 }
 
 .vehicle-info p {
   padding: 1rem;
-  color: var(--dark-grey);
-  border: .05rem solid var(--dark-blue);
-  border-radius: .25rem;
+  color: var(--yellow);
+  border: .05rem solid var(--black);
+  border-radius: .30rem;
   background-color: var(--light-blue);
 }
 
@@ -353,3 +353,4 @@ body {
           'vehicle-hero vehicle-info';
   }
 }
+

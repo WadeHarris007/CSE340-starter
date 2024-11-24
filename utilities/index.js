@@ -1,49 +1,48 @@
-const invModel = require("../models/inventory-model")
+const inModel = require("../models/inventory-model")
 const Util = {}
 
 /* ************************
  * Constructs the nav HTML unordered list
  ************************** */
-Util.getNav = async function (req, res, next) {
-  let data = await invModel.getClassifications()
-  let list = "<ul>"
-  list += '<li><a href="/" title="Home page">Home</a></li>'
-  data.rows.forEach((row) => {
-    list += "<li>"
-    list +=
-      '<a href="/inv/type/' +
-      row.classification_id +
-      '" title="See our inventory of ' +
-      row.classification_name +
-      ' vehicles">' +
-      row.classification_name +
-      "</a>"
-    list += "</li>"
-  })
-  list += "</ul>"
-  return list
+Util.getNav = async (req, res, next) => {
+    let data = await inModel.getClassifications()
+    let list = "<ul>"
+    list += '<li><a href="/" title="Home page">Home</a></li>'
+    data.rows.forEach((row) => {
+        list += "<li>"
+        list +=
+            '<a href="/inv/type/' +
+            row.classification_id +
+            '" title="See our inventory of ' +
+            row.classification_name +
+            ' vehicles">' +
+            row.classification_name +
+            "</a>"
+        list += "</li>"
+    })
+    list += "</ul>"
+    return list
 }
-
 
 /* **************************************
 * Build the classification view HTML
 * ************************************ */
 Util.buildClassificationGrid = async (data) => {
-    let grid
+    let grid;
     if (data.length > 0) {
         grid = '<ul class="inv-display">'
         data.forEach(vehicle => {
             grid += '<li class="inv-item">'
             grid += '<a href="../../inv/detail/' + vehicle.inv_id
-                + '" title="View ' + vehicle.inv_make + ' ' + vehicle.inv_model
+                + '" title="View ' + vehicle.in_make + ' ' + vehicle.in_model
                 + 'details"><img src="' + vehicle.inv_thumbnail
-                + '" alt="Image of ' + vehicle.inv_make + ' ' + vehicle.inv_model
+                + '" alt="Image of ' + vehicle.in_make + ' ' + vehicle.in_model
                 + ' on CSE Motors"></a>'
             grid += '<div class="namePrice">'
             grid += '<h2>'
             grid += '<a href="../../inv/detail/' + vehicle.inv_id + '" title="View '
-                + vehicle.inv_make + ' ' + vehicle.inv_model + ' details">'
-                + vehicle.inv_make + ' ' + vehicle.inv_model + '</a>'
+                + vehicle.in_make + ' ' + vehicle.in_model + ' details">'
+                + vehicle.in_make + ' ' + vehicle.in_model + '</a>'
             grid += '</h2>'
             grid += '<span class="inv-price">$'
                 + new Intl.NumberFormat('en-US').format(vehicle.inv_price) + '</span>'
@@ -60,13 +59,13 @@ Util.buildClassificationGrid = async (data) => {
 Util.buildVehicleDetails = async (data) => {
     let details = '<div class="vehicle-details">'
     if (data) {
-        details += '<h1 class="detail-title">' + data.inv_make + ' ' + data.inv_model + '</h1>'
-        details += '<div class="vehicle-hero">'
+        details += '<h1 class="detail-title">' + data.in_make + ' ' + data.in_model + '</h1>'
+        details += '<div class="vehicle-hero">';
         details += '<img src="' + data.inv_image + '" alt="Image of '
-            + data.inv_make + ' ' + data.inv_model
+            + data.in_make + ' ' + data.in_model
             + ' on CSE Motors">'
-        details += '</div>'
-        details += '<div class="vehicle-info">'       
+        details += '</div>';
+        details += '<div class="vehicle-info">'        
         details += '<span>Description:</span>'
         details += '<p>' + data.inv_description + '</p>'
         details += '<span>Year:</span>'
@@ -74,7 +73,7 @@ Util.buildVehicleDetails = async (data) => {
         details += '<span>Color:</span>'
         details += '<p>' + data.inv_color + '</p>'
         details += '<span>Miles:</span>'
-        details += '<p>' + new Intl.NumberFormat('en-US').format(data.inv_miles) + '</p>'
+        details += '<p>' + new Intl.NumberFormat('en-US').format(data.in_miles) + '</p>'
         details += '<span>Price:</span>'
         details += '<p>$ ' + new Intl.NumberFormat('en-US').format(data.inv_price) + '</p>'
         details += '</div>'
@@ -85,6 +84,7 @@ Util.buildVehicleDetails = async (data) => {
     }
     return details
 }
+
 /* ****************************************
  * Middleware For Handling Errors
  * Wrap other function in this for 

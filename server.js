@@ -17,7 +17,7 @@ const utilities = require("./utilities")
 /* ***********************
  * Routes
  *************************/
-env.config()
+
 app.use(require("./routes/static"))
 app.set("view engine", "ejs")
 app.use(require("express-ejs-layouts"))
