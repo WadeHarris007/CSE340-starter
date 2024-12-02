@@ -1,11 +1,11 @@
-const inModel = require("../models/inventory-model")
+const invModel = require("../models/inventory-model")
 const Util = {}
 
 /* ************************
  * Constructs the nav HTML unordered list
  ************************** */
 Util.getNav = async (req, res, next) => {
-    let data = await inModel.getClassifications()
+    let data = await invModel.getClassifications()
     let list = "<ul>"
     list += '<li><a href="/" title="Home page">Home</a></li>'
     data.rows.forEach((row) => {
@@ -83,6 +83,22 @@ Util.buildVehicleDetails = async (data) => {
         details += '</div>'
     }
     return details
+}
+
+/**
+ * Build classifications form select 
+ */
+util.buildSelectClassification = async (classificationId) => {
+    let data = await invModel.getClassifications();
+    let select = '<label for="classification_id"><b>Classification*</b></label><br>';
+    select += '<select id="classification_id" name="classification_id">';
+    data.rows.forEach((row) => {
+        select += '<option value="' + row.classification_id + '"';
+        select += parseInt(classificationId) === row.classification_id ? " selected" : "";
+        select += '>' + row.classification_name + '</option>';
+    });
+    select += '</select><br>';
+    return select;
 }
 
 /* ****************************************
