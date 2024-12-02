@@ -11,7 +11,7 @@
     </ul>
     <% } %>
     <div class="inv-form">
-        <form action="/inv/add-inventory" method="post">
+        <form action="/views/inventory/add-inventory.ejs" method="post">
             <label for="inv_make"><b>Manufacturer*</b></label><br>
             <input type="text" name="inv_make" id="inv_make" placeholder="Enter manufacturer here" pattern=".{2,}"
                 value="<%= locals.inv_make %>" required><br>
@@ -54,6 +54,6 @@
             <input title="Click to add vehicle" type="submit" value="Add Vehicle">
         </form>
     </div>
-    <p><a title="Click to back to vehicle management" href="/inv/management">Back to Vehicle Management</a>
+    <p><a title="Click to back to vehicle management" href="/views/inventory/management.ejs">Back to Vehicle Management</a>
     </p>
 </div>

@@ -1,5 +1,5 @@
 const pool = require("../database/")
-const invModel = {}
+const invModel = {};
 
 /**
  * Get all classification data 
