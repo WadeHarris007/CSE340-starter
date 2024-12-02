@@ -1,10 +1,10 @@
 const invModel = require("../models/inventory-model")
-const Util = {}
+const util = {};
 
 /* ************************
  * Constructs the nav HTML unordered list
  ************************** */
-Util.getNav = async (req, res, next) => {
+util.getNav = async (req, res, next) => {
     let data = await invModel.getClassifications()
     let list = "<ul>"
     list += '<li><a href="/" title="Home page">Home</a></li>'
@@ -27,7 +27,7 @@ Util.getNav = async (req, res, next) => {
 /* **************************************
 * Build the classification view HTML
 * ************************************ */
-Util.buildClassificationGrid = async (data) => {
+util.buildClassificationGrid = async (data) => {
     let grid;
     if (data.length > 0) {
         grid = '<ul class="inv-display">'
@@ -56,7 +56,7 @@ Util.buildClassificationGrid = async (data) => {
     return grid
 }
 
-Util.buildVehicleDetails = async (data) => {
+util.buildVehicleDetails = async (data) => {
     let details = '<div class="vehicle-details">'
     if (data) {
         details += '<h1 class="detail-title">' + data.in_make + ' ' + data.in_model + '</h1>'
@@ -106,6 +106,6 @@ util.buildSelectClassification = async (classificationId) => {
  * Wrap other function in this for 
  * General Error Handling
  **************************************** */
-Util.handleErrors = fn => (req, res, next) => Promise.resolve(fn(req, res, next)).catch(next)
+util.handleErrors = fn => (req, res, next) => Promise.resolve(fn(req, res, next)).catch(next)
 
-module.exports = Util;
+module.exports = util;
