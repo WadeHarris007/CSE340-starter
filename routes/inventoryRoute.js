@@ -30,7 +30,7 @@ router.post(
 // This route will handle a new inventory
 router.post(
     '/add-inventory',
-    invValidate.inventoryRules(),
+    //invValidate.inventoryRules(),
     invValidate.checkInventoryData,
     utilities.handleErrors(invController.addInventory))
 
