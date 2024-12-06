@@ -11,13 +11,13 @@
     </ul>
     <% } %>
     <div class="inv-form">
-        <form action="/views/inventory/add-inventory.ejs" method="post">
-            <label for="inv_make"><b>Manufacturer*</b></label><br>
-            <input type="text" name="inv_make" id="inv_make" placeholder="Enter manufacturer here" pattern=".{2,}"
-                value="<%= locals.inv_make %>" required><br>
-            <label for="inv_model"><b>Model*</b></label><br>
-            <input type="text" name="inv_model" id="inv_model" placeholder="Enter model here" pattern=".{2,}"
-                value="<%= locals.inv_model %>" required><br>
+        <form action="/inv/add-inventory" method="post">
+            <label for="in_make"><b>Manufacturer*</b></label><br>
+            <input type="text" name="in_make" id="in_make" placeholder="Enter manufacturer here" pattern=".{2,}"
+                value="<%= locals.in_make %>" required><br>
+            <label for="in_model"><b>Model*</b></label><br>
+            <input type="text" name="in_model" id="in_model" placeholder="Enter model here" pattern=".{2,}"
+                value="<%= locals.in_model %>" required><br>
             <label for="inv_year"><b>Year*</b></label><br>
             <input type="number" name="inv_year" id="inv_year" placeholder="Enter year here"
                 value="<%= locals.inv_year %>" pattern="^(189[0-9]|19[0-9][0-9]|2[0-9]{3})$" required><br>
@@ -44,8 +44,8 @@
             <input type="number" name="inv_price" id="inv_price" placeholder="Enter price here" step="0.01" min="0"
                 value="<%= locals.inv_price %>" lang="en-US" required><br>
             <label for="inv_miles"><b>Miles*</b></label><br>
-            <input type="number" name="inv_miles" id="inv_miles" placeholder="Enter miles here" step="0.01" min="0"
-                value="<%= locals.inv_miles %>" lang="en-US" required><br>
+            <input type="number" name="in_miles" id="in_miles" placeholder="Enter miles here" step="0.01" min="0"
+                value="<%= locals.in_miles %>" lang="en-US" required><br>
             <label for="inv_color"><b>Color*</b></label><br>
             <input type="text" name="inv_color" id="inv_color" placeholder="Enter color here" pattern=".{2,}"
                 value="<%= locals.inv_color %>" required><br>
@@ -54,6 +54,6 @@
             <input title="Click to add vehicle" type="submit" value="Add Vehicle">
         </form>
     </div>
-    <p><a title="Click to back to vehicle management" href="/views/inventory/management.ejs">Back to Vehicle Management</a>
+    <p><a title="Click to back to vehicle management" href="/inv/management">Back to Vehicle Management</a>
     </p>
 </div>

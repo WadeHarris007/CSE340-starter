@@ -1,4 +1,5 @@
-const pool = require("../database/");
+//Bring into scope
+const pool = require("../database/")
 
 /**
  * Register new account
@@ -12,9 +13,9 @@ const registerAccount = async (account_firstname, account_lastname, account_emai
             account_password, 
             account_type) V
             ALUES ($1, $2, $3, $4, 'Client') RETURNING *`;
-        return await pool.query(sql, [account_firstname, account_lastname, account_email, account_password]);
+        return await pool.query(sql, [account_firstname, account_lastname, account_email, account_password])
     } catch (error) {
-        return error.message;
+        return error.message
     }
 }
 
@@ -24,11 +25,11 @@ const registerAccount = async (account_firstname, account_lastname, account_emai
 const checkExistingEmail = async (account_email) => {
     try {
         const sql = "SELECT * FROM account WHERE account_email = $1";
-        const email = await pool.query(sql, [account_email]);
-        return email.rowCount;
+        const email = await pool.query(sql, [account_email])
+        return email.rowCount
     } catch (error) {
-        return error.message;
+        return error.message
     }
 }
 
-module.exports = { registerAccount, checkExistingEmail }
+module.exports = { registerAccount, checkExistingEmail };

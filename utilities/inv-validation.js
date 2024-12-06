@@ -1,6 +1,7 @@
-const utilities = require(".");
-const { body, validationResult } = require("express-validator");
-const invModel = require("../models/inventory-model");
+// Bring into scope
+const utilities = require(".")
+const { body, validationResult } = require("express-validator")
+const invModel = require("../models/inventory-model")
 const validate = {};
 
 /**
@@ -14,12 +15,12 @@ validate.classificationRules = () => {
             .notEmpty()
             .withMessage("Please provide a classification name.")
             .custom(async (classification_name) => {
-                const classification = await invModel.checkExistingClassification(classification_name);
+                const classification = await invModel.checkExistingClassification(classification_name)
                 if (classification) {
-                    throw new Error("Classification exists. Please choose other classification name.");
+                    throw new Error("Classification exists. Please choose other classification name.")
                 }
             }),
-    ];
+    ]
 }
 
 /**
@@ -27,12 +28,12 @@ validate.classificationRules = () => {
  */
 validate.inventoryRules = () => {
     return [
-        body("inv_make")
+        body("in_make")
             .trim()
             .isLength({ min: 1 })
             .withMessage("Please provide a manufactorer name."),
 
-        body("inv_model")
+        body("in_model")
             .trim()
             .isLength({ min: 1 })
             .withMessage("Please provide a model name."),
@@ -44,7 +45,7 @@ validate.inventoryRules = () => {
             .custom((inv_year) => {
                 let year = parseInt(inv_year);
                 if (year < 1870 || year > 2999) {
-                    throw new Error("Year should be between 1870 or more. Please choose other year.");
+                    throw new Error("Year should be between 1870 or more. Please choose other year.")
                 }
             }),
 
@@ -68,7 +69,7 @@ validate.inventoryRules = () => {
             .isNumeric()
             .withMessage("Please provide a price."),
 
-        body("inv_miles")
+        body("in_miles")
             .trim()
             .isNumeric()
             .withMessage("Please provide miles."),
@@ -83,18 +84,18 @@ validate.inventoryRules = () => {
             .isLength({ min: 1 })
             .isNumeric()
             .withMessage("Please provide a classification."),
-    ];
+    ]
 }
 
 /**
  * Check data and return errors or continue to add classification
  */
 validate.checkClassificationData = async (req, res, next) => {
-    const { classification_name } = req.body;
+    const { classification_name } = req.body
     let errors = [];
-    errors = validationResult(req);
+    errors = validationResult(req)
     if (!errors.isEmpty()) {
-        let nav = await utilities.getNav();
+        let nav = await utilities.getNav()
         res.render("inventory/add-classification", {
             errors,
             title: "Add Classification",
@@ -102,7 +103,7 @@ validate.checkClassificationData = async (req, res, next) => {
             pagecss: "inv",
             classification_name,
         });
-        return;
+        return
     }
     next();
 }
@@ -125,7 +126,7 @@ validate.checkInventoryData = async (req, res, next) => {
     } = req.body;
 
     let errors = [];
-    errors = validationResult(req);
+    errors = validationResult(req)
     if (!errors.isEmpty()) {
         let nav = await utilities.getNav();
         let select = await utilities.buildSelectClassification(classification_id);

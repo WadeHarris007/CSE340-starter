@@ -11,7 +11,7 @@
     </ul>
     <% } %>
     <div class="inv-form">
-        <form action="/views/inventory/add-classification.ejs" method="post">
+        <form action="/inv/add-classification" method="post">
             <label for="classification_name"><b>Classification*</b></label><br>
             <input type="text" name="classification_name" id="classification_name" pattern=".{2,}"
                 placeholder="Enter classification here" value="<%= locals.classification_name %>" required><br>
@@ -19,5 +19,5 @@
             <input title="Click to add classification" type="submit" value="Add Classification">
         </form>
     </div>
-    <p><a title="Click to back to vehicle management" href="/views/inventory/management.ejs">Back to Vehicle Management</a></p>
+    <p><a title="Click to back to vehicle management" href="/inv/management">Back to Vehicle Management</a></p>
 </div>

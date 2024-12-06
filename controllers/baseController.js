@@ -1,13 +1,17 @@
-const utilities = require("../utilities/")
-const baseController = {}
+//Bring into scope
+const utilities = require("../utilities")
+// Define homecss
+const homecss = "home"
 
-baseController.buildHome = async function(req, res){
-  const nav = await utilities.getNav()
-  res.render("index", {title: "Home", nav})
+const baseController = {};
+
+baseController.buildHome = async (req, res) => {
+    const nav = await utilities.getNav();
+    res.render("index", { title: "Home", nav, pagecss: homecss, })
 }
 
 baseController.InternalServerError = async (req, res) => {
-    res.render("index", { title: "Home", nav, pagecss: "home" })
+    res.render("index", { title: "Home", nav, pagecss: homecss, })
 }
 
 module.exports = baseController;

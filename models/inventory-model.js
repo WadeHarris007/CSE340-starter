@@ -1,3 +1,4 @@
+//Bring into scope
 const pool = require("../database/")
 const invModel = {};
 
@@ -5,11 +6,11 @@ const invModel = {};
  * Get all classification data 
  */
 invModel.getClassifications = async () => {
-    return await pool.query("SELECT * FROM public.classification ORDER BY classification_name");
+    return await pool.query("SELECT * FROM public.classification ORDER BY classification_name")
 }
 
 /**
- * Get all inventory items and classification_name by classification_id 
+ * Get all inventory items and classifications 
  */
 invModel.getInventoryByClassificationId = async (classificationId) => {
     try {
@@ -22,7 +23,7 @@ invModel.getInventoryByClassificationId = async (classificationId) => {
         );
         return data.rows;
     } catch (error) {
-        console.error("getclassificationsbyid error " + error);
+        console.error("getclassificationsbyid error " + error)
     }
 }
 
@@ -32,15 +33,15 @@ invModel.getInventoryByClassificationId = async (classificationId) => {
 invModel.getClassificationName = async (classification_id) => {
     try {
         const sql = "SELECT classification_name FROM public.classification WHERE classification_id = $1";
-        const data = await pool.query(sql, [classification_id]);
+        const data = await pool.query(sql, [classification_id])
         return data.rows[0].classification_name
     } catch (error) {
-        console.error("getClassificationName error " + error);
+        console.error("getClassificationName error " + error)
     }
 }
 
 /**
- * Get vehicle detail by invId
+ * Get vehicle detail by (invId)
  */
 invModel.getInventoryByInvId = async (invId) => {
     try {
@@ -50,39 +51,39 @@ invModel.getInventoryByInvId = async (invId) => {
             ON i.classification_id = c.classification_id
             WHERE i.inv_id = $1`, [invId]
         );
-        return data.rows[0];
+        return data.rows[0]
     } catch (error) {
-        console.error("getInventoryByInvId error " + error);
+        console.error("getInventoryByInvId error " + error)
     }
 }
 
 /**
- * Check existing classification by classification_name
+ * Check existing classification by classification_name!
  */
 invModel.checkExistingClassification = async (classification_name) => {
     try {
         const sql = "SELECT * FROM classification WHERE classification_name = $1";
-        const classification = await pool.query(sql, [classification_name]);
+        const classification = await pool.query(sql, [classification_name])
         return classification.rowCount;
     } catch (error) {
-        console.error("checkExistingClassification error " + error);
+        console.error("checkExistingClassification error " + error)
     }
 }
 
 /**
- * Add new classification
+ * This will add new classifications
  */
 invModel.addClassification = async (classification_name) => {
     try {
         const sql = "INSERT INTO classification (classification_name) VALUES ($1) RETURNING *";
-        return await pool.query(sql, [classification_name]);
+        return await pool.query(sql, [classification_name])
     } catch (error) {
-        console.error("addClassification error " + error);
+        console.error("addClassification error " + error)
     }
 }
 
 /**
- * Add new inventory
+ * This will add new inventory
  */
 invModel.addInventory = async (
     in_make,
@@ -118,7 +119,7 @@ invModel.addInventory = async (
             inv_color,
             classification_id]);
     } catch (error) {
-        console.error("addClassification error " + error);
+        console.error("addClassification error " + error)
     }
 }
 
