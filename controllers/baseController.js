@@ -6,7 +6,7 @@ const homecss = "home"
 const baseController = {};
 
 baseController.buildHome = async (req, res) => {
-    const nav = await utilities.getNav();
+    const nav = await utilities.getNav()
     res.render("index", { title: "Home", nav, pagecss: homecss, })
 }
 

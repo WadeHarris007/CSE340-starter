@@ -1,8 +1,13 @@
 <div class="error-container">
     <h1><%- title %></h1>
     <div class="error-hero">
-        <h1>Oops, we found an error!</h1>        
-        <span class="error"><%- message %></span>
-        <h2></h2>  
+        <p>We found a problem, Marty!</p>        
+        <%- messages() %>
+        <br>
+        <img src="/images/site/404-hero.png" alt="404-hero">        
+    </div>
+    <br>
+    <div class="primary-button">                
+        <a href="/">Back to Home</a>
     </div>
 </div>
